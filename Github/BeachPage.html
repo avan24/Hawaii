@@ -1,0 +1,96 @@
+<html>
+    <head>
+
+        <style>
+
+            .btn {
+                color:rgb(34, 161, 151);
+                border: none;
+                background-color: inherit;
+                padding: 14px 28px;
+                font-size: 20px;
+                cursor: pointer;
+                display: inline-block;
+                font-weight: bold;
+            }
+
+            /* On mouse-over */
+            .btn:hover 
+            {   
+                color:rgb(184, 231, 221);
+            }
+
+
+
+
+
+
+            /**I used a flex box to evenly space out the headings on the naviagtion bar**/
+            .container
+                {
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+
+
+            /**Coloured in text box that says "food"**/
+            .box
+            {  
+                position: absolute;
+                background-color: rgb(0, 187, 171); 
+                height: 15%; 
+                width: 100%; 
+                left: 0%; 
+                top: 10%; 
+                text-align: center;
+                color:white;
+                padding-top: 50;
+                font-size: 50;
+                font-family: Arial;
+                font-weight: bold;
+            } 
+
+            /**subtitle**/
+            h2 
+            {
+                position: absolute;
+                z-index:2;
+                left: 35%; 
+                top: 21%; 
+                font-size: 25;
+                font-family: Arial;
+                color:white;
+                font-weight: lighter;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <!--Buttons on navigation bar-->
+        <div class="container">
+            <button class="btn Food" onClick="parent.location='FoodPage.html'">Food</button>
+            <button class="btn Activity" onClick="parent.location='ActivityPage.html'">Activity</button>
+            <input type="image" src="logo.jpg" width="80px" height="80" onClick="parent.location='Hawaii.html'">
+            <button class="btn Beach" onClick="parent.location='BeachPage.html'">Beach</button>
+            <button class="btn Adventure" onClick="parent.location='AdventurePage.html'">Adventure</button>
+        </div>
+
+
+
+
+        <div class="box">Beach</div> 
+
+        <h2>These are the best beaches in Oahu</h2>
+
+
+
+        <script type="text/javascript">
+
+
+        </script>
+
+
+    </body>

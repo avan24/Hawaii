@@ -1,0 +1,610 @@
+<html>
+    <head>
+        <title>Image Mapping</title>
+         
+        <!--for the css, I used this website to help me overlay the images of the maps, they explain how it works "http://www.corelangs.com/css/box/ontop.html" -->    
+        <style>
+            body 
+                {
+                    background-color: #cafbff;
+                }
+          
+
+            /* The alert message box */
+            .alert 
+                {
+                    padding: 20px;
+                    background-color:white; /* Red */
+                    color: white;
+                    margin-bottom: 15px;
+                }
+
+            /* The close button */
+            .closebtn 
+                {
+                    margin-left: 15px;
+                    color: black;
+                    font-weight: bold;
+                    float: right;
+                    font-size: 22px;
+                    line-height: 20px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                }
+
+            /* When moving the mouse over the close button */
+            .closebtn:hover 
+                {
+                    color: grey;
+                }
+
+
+
+                
+          
+            .radioButton     /*This styles the radio buttons*/
+                {
+                    text-align:center;
+                    margin-top:100px;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+          
+            .Empty    /*This creates the style for the empty image map*/
+                {
+                    position:absolute;   /*The absolute position means it is fixed in place*/
+                    top: 1300px;  /*The top and left position the map on a specific location*/
+                    left: 400px;   
+                }
+            
+            .Food     /*This creates the style for the food image map*/
+                {
+                    position:absolute;
+                    top: 1300px;
+                    left: 400px;
+ 
+                }
+            .Adventure  /*This creates the style for the adventure image map*/
+                {
+                    position:absolute;
+                    top: 1300px;
+                    left: 400px;
+                }
+            
+            .Beach    /*This creates the style for the beach image map*/
+                {
+                    position:absolute;
+                    top: 1300px;
+                    left: 400px;
+                }
+            .Activity      /*This creates the style for the activity image map*/
+                {
+                    position:absolute;
+                    top: 1300px;
+                    left: 400px;
+                }
+
+
+
+
+         
+
+            .btn 
+                {
+                    color:rgb(34, 161, 151);
+                    border: none;
+                    background-color: inherit;
+                    padding: 14px 28px;
+                    font-size: 20px;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-weight: bold;
+                }
+
+            /* On mouse-over */
+            .btn:hover 
+                {   
+                    color:rgb(184, 231, 221);
+                }
+
+            /**I used a flex box to evenly space out the headings on the naviagtion bar**/
+            .container
+                {
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+
+
+
+
+            /**Cost calculator**/
+            
+            .box /**background box**/
+                {  
+                    position: absolute;
+                    background-color: rgb(0, 187, 171); 
+                    height: 28%; 
+                    width: 18%; 
+                    left: 25%; 
+                    top: 237%; 
+                    text-align: center;
+                    z-index: -1;
+                } 
+
+
+
+            p /** text of the question and result**/
+            {
+                font-size: 15px;
+                margin-left:26%;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+ 
+            h2 /** title "Cost Calculator"**/
+            {
+                margin-top:1050;
+                margin-left:26%;
+                font-size: 22px;
+                font-weight: bold;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #traveller /**Input box for number of travellers**/
+            {
+                margin-left:26%;
+            }
+
+            #days /**Input box for number of days**/
+            {
+                margin-left:26%;
+            }
+
+            #CalculateButton /**button**/
+            {
+                margin-left:26%;
+            }
+
+
+
+
+
+
+          
+            .answers 
+            {
+                 margin-bottom: 20px;
+            }
+
+            #submit   /** submit button**/
+            {
+                position:absolute;
+                top:259%;
+                left:49%;
+                font-family: sans-serif;
+                font-size: 14px;
+                background-color: #297;
+                color: rgb(255, 255, 255);
+                border: 0px;
+                border-radius: 3px;
+                padding: 20px;
+                cursor: pointer;
+                margin-bottom: 20px;
+                height: 10;
+            }
+    
+            #submit:hover /** once hovered over submit button**/
+            {
+                background-color: #3a8;
+            }
+
+            #quiz   /** position of quiz**/
+            {
+                position: absolute;
+                top:243%;
+                left:48%;
+            }
+
+            #results  /** position of results**/
+            {
+                position: absolute;
+                top:260%;
+                left:57%;
+            }
+
+            .box3 /**background box**/
+            {
+                position: absolute;
+                background-color: #ccfffc; 
+                height: 28%; 
+                width: 18%; 
+                left: 47%; 
+                top: 237%; 
+                text-align: center;
+                z-index: -1;
+            }
+
+            .HawaiianQuiz /** title "Hawaiian Quiz"**/
+            {
+               position:absolute;
+               margin-top: -14%;
+                margin-left:47.5%;
+                font-size: 22px;
+                font-weight: bold;
+                color: black;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+
+
+            .box2
+            {
+                position: absolute;
+                background-color: white; 
+                height: 50%; 
+                width: 100%; 
+                left: 0%; 
+                top: 225%; 
+                text-align: center;
+                z-index: -2;
+            }
+         
+
+        </style>
+
+    </head>
+
+
+    <body>
+
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             <a href="https://health.hawaii.gov/coronavirusdisease2019/travel/travelers-returning-to-hawaii/">COVID-19 Travel Guide Before Entering Oahu</a>
+        </div>
+      
+   
+
+        <!--Buttons on navigation bar-->
+        <div class="container">
+            <button class="btn" onClick="parent.location='FoodPage.html'">Food</button>
+            <button class="btn" onClick="parent.location='ActivityPage.html'">Activity</button>
+            <input class="btn" type="image" src="logo.jpg" width="80px" height="80" onClick="parent.location='Hawaii.html'">
+            <button class="btn" onClick="parent.location='BeachPage.html'">Beach</button>
+            <button class="btn" onClick="parent.location='AdventurePage.html'">Adventure</button>
+        </div>
+        
+
+        <!--this div class contains the video which is in an mp4 file-->   
+        <video class="OahuVideo" width="100%" controls autoplay>
+            <source src="OahuVideo.mp4" type="video/mp4">
+        </video>
+
+
+
+        <!--this is the radio button, each radio button has an associated function-->  
+        <!--by keepin the names to be called "select", for all radio buttons,this allows me to select one radio button at a time-->  
+       <div class="radioButton">
+           <!--When I select the Food radio button, it will activate the "showFood" function-->
+            <input type="radio" onclick="showFood()" name="select">  
+            <label>Food</label>
+           
+            <!--When I select the Adventure radio button, it will activate the "showAdventure" function-->
+            <input type="radio" onclick="showAdventure()" name="select">
+            <label>Adventure</label>
+           
+           <!--When I select the Beach radio button, it will activate the "showBeach" function-->
+            <input type="radio" onclick="showBeach()" name="select">
+            <label>Beach</label>
+
+            <!--When I select the Activity radio button, it will activate the "showActivity" function-->
+            <input type="radio" onclick="showActivity()" name="select">
+            <label>Activity</label>
+        </div>
+
+        
+        <!--this is the image of each map, by default I created it so the visibility is hidden for all maps, 
+        except for the empty one-->  
+        <!--The empty map is the default map without any pinpoints-->
+        <img src="mapEmpty.png" class="Empty">
+        <img src="mapFoods.png" class="Food" usemap="#mapFood" style="visibility: hidden;">
+        <img src="mapActivity.png" class="Activity" usemap="#mapActivity" style="visibility: hidden;">
+        <img src="mapAdventure.png" class="Adventure" usemap="#mapAdventure" style="visibility: hidden;">
+        <img src="mapBeach.png" class="Beach" usemap="#mapBeach" style="visibility: hidden;">
+
+
+       
+       
+        <!--this code is to create the invisible circle button that redirects to different link or webpage-->
+        <!--Each invisible button is layed over each coordinate of the pinpoints on the map-->
+        <map name="mapFood">
+            <area shape = "circle" coords ="355,281,30" href = "https://matsumotoshaveice.com/"><!--matsumoto shave ice-->
+            <area shape = "circle" coords ="558,567,30" href = "https://www.lilihabakery.com/"><!--liliha bakeryy-->
+            <area shape = "circle" coords ="619,603,30" href = "https://www.genkisushiusa.com/"><!--genki sushi-->
+            <area shape = "circle" coords ="682,660,30" href = "https://www.leonardshawaii.com/home/"><!--Leonards Bakery-->
+            <area shape = "circle" coords ="750,703,30" href = "https://www.yelp.ca/biz/ono-seafood-honolulu"><!--ono seafood poke-->
+        </map>
+
+        <map name="mapAdventure">
+            <area shape = "circle" coords ="737,418,30" href = "https://www.hawaiiactivities.com/en/hawaii/oahu/ctg/165886:kaneohe_bay_sandbar/"> <!--kaneohe sandbar-->
+            <area shape = "circle" coords ="701,604,30" href = "https://www.journeyera.com/stairway-to-heaven-oahu-hawaii/"><!--stairway to heaven-->
+            <area shape = "circle" coords ="872,539,30" href = "https://www.alltrails.com/trail/hawaii/oahu/kaiwa-ridge-lanikai-pillbox-trail"><!--pillbox-->
+            <area shape = "circle" coords ="939,664,30" href = "https://www.alltrails.com/trail/hawaii/oahu/makapuu-tide-pools"><!--makappuu tidepool-->
+        </map>
+
+        <map name="mapBeach">
+            <area shape = "circle" coords ="706,713,30" href = "https://www.gohawaii.com/islands/oahu/regions/honolulu/Waikiki"> <!--waikiki-->
+            <area shape = "circle" coords ="893,711,30" href = "https://www.best-of-oahu.com/halona-beach-cove.html"><!--halona cove-->
+            <area shape = "circle" coords ="907,623,30" href = "https://www.tripadvisor.ca/Attraction_Review-g60662-d109836-Reviews-Waimanalo_Beach-Waimanalo_Oahu_Hawaii.html"><!--waimanalo-->
+            <area shape = "circle" coords ="872,532,30" href = "https://www.tripadvisor.ca/Attraction_Review-g60652-d526149-Reviews-Lanikai_Beach-Kailua_Oahu_Hawaii.html"><!--Lanikai-->
+        </map>
+    
+        <map name="mapActivity">
+            <area shape = "circle" coords ="333,613,30" href = "https://www.wetnwildhawaii.com/"> <!--wetNwild-->
+            <area shape = "circle" coords ="544,174,30" href = "https://www.gohawaii.com/hawaiian-culture/luau"><!--Luau-->
+            <area shape = "circle" coords ="649,639,30" href = "https://www.alamoanacenter.com/en.html"><!--ala moana-->
+            <area shape = "circle" coords ="712,707,30" href = "https://starofhonolulu.com/dinner-cruises-oahu-hawaii"><!--dinner cruise-->
+            <area shape = "circle" coords ="836,686,30" href = "https://www.pearlharboroahu.com/"><!--pearl harbour-->
+        </map>
+
+
+
+           <!-- <input style=position:absolute;top:123.5%;left:5%;width:7%; type="submit"  value="Calculate Cost" onclick="Cost()">-->
+
+       
+       
+<!-- This division is set up in order to create an HTML form  -->
+        <div id="myForm">
+            <h2>Cost Calculator</h2>
+            <p>How many people are travelling to Oahu?</p>
+            <!-- Set up id for reference in JS. Specify that the input type is a number. -->
+            <input id='traveller' type='number'/>
+           
+            <p>How many days are you staying in Oahu?</p>
+            <input id='days' type='number'/>
+        
+        <div> 
+               <!-- when the user presses the calculate button it runs the "calculate" function" -->
+            <button id="CalculateButton" onclick='calculate()'>Calculate</button>
+        </div>
+
+            <!-- We set up a divsion without any text but blank paragraph tags with IDs. This is where the html of the following p tags will be changed to display the results of the calculation. -->
+            <p id='result'></p>
+            </br>
+            <p id='result2'></p>
+
+        </div>
+
+    
+        <div class="box"></div> 
+
+
+        <div id="quiz"></div>
+        <button id="submit">Submit</button>
+        <div id="results"></div>
+
+        <div class="box2"></div> 
+
+        <div class="box3"></div> 
+
+        <h2 class="HawaiianQuiz">Hawaiian Quiz</h2>
+
+        <!--java script-->  
+        <!--this is a function makes one one particular map visible at a time while the others are hidden,
+         For example, in the showFood function, it will show only the map of food places in Oahu, while
+        it will hide all the other categories.-->    
+         <!--These functions will be activated by the radio buttons-->
+        <script type="text/javascript">
+        
+            //this function displays only the Food image map, while all other maps are hidden
+            function showFood() 
+            {
+                element = document.querySelector('.Food');
+                element.style.visibility = 'visible';
+                
+                element = document.querySelector('.Empty');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Adventure');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Beach');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Activity');
+                element.style.visibility = 'hidden';
+            }
+        
+            //this function displays only the Adventure image map, while all other maps are hidden
+            function showAdventure() 
+            {
+                element = document.querySelector('.Adventure');
+                element.style.visibility = 'visible';
+                
+                element = document.querySelector('.Empty');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Food');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Beach');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Activity');
+                element.style.visibility = 'hidden';
+            }
+
+            //this function displays only the Beach image map, while all other maps are hidden
+            function showBeach() 
+            {
+                element = document.querySelector('.Beach');
+                element.style.visibility = 'visible';
+                
+                element = document.querySelector('.Empty');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Food');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Adventure');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Activity');
+                element.style.visibility = 'hidden';
+            }
+            
+            //this function displays only the Activity image map, while all other maps are hidden
+            function showActivity() 
+            {
+                element = document.querySelector('.Activity');
+                element.style.visibility = 'visible';
+                
+                element = document.querySelector('.Empty');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Food');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Adventure');
+                element.style.visibility = 'hidden';
+                element = document.querySelector('.Beach');
+                element.style.visibility = 'hidden';
+            }
+
+       
+
+
+            
+            // Create result variables that collect the input data
+            var result = document.getElementById('result');
+            var result2 = document.getElementById('result2');
+
+                function calculate() 
+                {
+                    var t = traveller.value;
+                    var d = days.value;
+                    var calc = 1000 + t * d * 120;
+                    result.innerHTML = "Your approximate vacation cost is: $" + calc;
+                }
+
+
+                
+                //quiz//
+            var myQuestions = [
+            {
+                question: "What year did Hawaii become a state?",
+                answers: {
+                a: '1939',
+                b: '1959',
+                c: '1979'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "What is the population of Oahu?",
+                answers: {
+                a: '750k',
+                b: '850k',
+                c: '950k'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "What is the size of Oahu?",
+                answers: {
+                a: '1500km²',
+                b: '2000km²',
+                c: '2500km²'
+                },
+                correctAnswer: 'a'
+            },
+
+            ];
+
+
+            var quizContainer = document.getElementById('quiz');
+            var resultsContainer = document.getElementById('results');
+            var submitButton = document.getElementById('submit');
+
+            generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+            function generateQuiz(questions, quizContainer, resultsContainer, submitButton)
+                {
+
+                    function showQuestions(questions, quizContainer)
+                        {
+                            // I create a place to store the output and the answer choices
+                            var output = [];
+                            var answers;
+
+                        //the code here is a loop that checks through the number of questions I have by setting  a counter that goes up in increments for each question that I have
+                            for(var i=0; i<questions.length; i++)
+                                {
+                                
+                                    // This resets the list of answers         
+                                    answers = [];
+
+                                    for(letter in questions[i].answers)  //here is another loop that checks how many questions I have and adds a radio for each question, as well as additional radio buttons for each answer. 
+                                        {      
+                                            answers.push(
+                                            '<label>'
+                                                // I create a radio button input and displays the questions and the possible answers
+                                                + '<input type="radio" name="question'+i+'" value="'+letter+'">'
+                                                + letter + ': '
+                                                + questions[i].answers[letter]
+                                            + '</label>'
+                                            );
+                                        }
+
+                                    // I add this question and its answers to the output
+                                    output.push('<div class="question">' + questions[i].question + '</div>' + '<div class="answers">' + answers.join('') + '</div>');
+                                }
+
+                            // I combine the output list into one string of html and put it on the page
+                            quizContainer.innerHTML = output.join('');
+                        }
+
+
+                        function showResults(questions, quizContainer, resultsContainer)
+                            {  
+                                // gather answer containers from our quiz
+                                var answerContainers = quizContainer.querySelectorAll('.answers');
+                                
+                                // keep track of user's answers
+                                var userAnswer = '';
+                                var numCorrect = 0;
+                                
+                                // for each question...
+                                for(var i=0; i<questions.length; i++)
+                                {
+                                    // find selected answer
+                                    userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+                                    
+                                    // if answer is correct
+                                    if(userAnswer===questions[i].correctAnswer)
+                                        {
+                                            // add to the number of correct answers
+                                            numCorrect++;
+                                            
+                                            // color the answers green
+                                            answerContainers[i].style.color = 'green';
+                                        }
+                                   
+                                    // if answer is wrong or blank
+                                    else
+                                        {
+                                            // color the answers red
+                                            answerContainers[i].style.color = 'red';
+                                        }
+                                }
+
+                                // show number of correct answers out of total
+                                resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
+                            }
+
+                        // show questions right away
+                        showQuestions(questions, quizContainer);
+                            
+                        // on submit, show results
+                        submitButton.onclick = function()
+                            {
+                                showResults(questions, quizContainer, resultsContainer);
+                            }
+
+                }
+
+
+
+
+        </script>
+    </body>
+</html>
+
